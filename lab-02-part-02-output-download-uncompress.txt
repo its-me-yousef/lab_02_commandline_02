@@ -171,7 +171,7 @@ ent-v314-010:my-stuff student$ curl -o mtec1002-lab-02.zip http://foureyes.githu
                                  Dload  Upload   Total   Spent    Left  Speed
 100  935k  100  935k    0     0  1541k      0 --:--:-- --:--:-- --:--:-- 5111k
 ent-v314-010:my-stuff student$ 
-ent-v314-010:my-stuff student$ ls
+ent-v314-010:my-stuff student$ lsl
 Labhw.txt		current
 archived		mtec1002-lab-02.zip
 
@@ -180,14 +180,22 @@ archived		mtec1002-lab-02.zip
 
 Write down the command that you used to uncompress the file.
 ----------
-
+ent-v314-010:my-stuff student$ tar -xvf mtec1002-lab-02.zip
+x mtec1002-lab-02/
+x mtec1002-lab-02/.DS_Store
+x __MACOSX/
+and so on
 
 ==========
 15. Change to the directory that was just created.  List the contents (of the directory that was extracted from the labs .zip file). 
 
 Copy and paste the output below.
 ----------
-
+ent-v314-010:~ student$ cd mtec1002-lab-02
+ent-v314-010:mtec1002-lab-02 student$ pwd
+/Users/student/mtec1002-lab-02
+ent-v314-010:mtec1002-lab-02 student$ ls
+books	logs	web
 
 ==========
 We're going to mess around with archiving and compressing files.  We'll make a directory with a file in it... archive and compress it.... and uncompress it elsewhere.
@@ -198,19 +206,17 @@ We're going to mess around with archiving and compressing files.  We'll make a d
 Copy and paste the output below.
 ----------
 
-ent-v314-010:~ student$ mkdir stuff
 ent-v314-010:~ student$ ls
-Adlm			MPLABXProjects		ajax-test
-Adobe			Movies			filename.txt
-Applications		Music			ipe.properties
-Desktop			New Unity Project	isus
-Documents		Pictures		pymel.log
-Downloads		Public			stuff
-Library			Things			xgen
+Adlm			Music			hello.txt
+Adobe			New Unity Project	ipe.properties
+Applications		Pictures		isus
+Desktop			Public			mtec1002-lab-02
+Documents		Things			mtec1002-lab-02.zip
+Downloads		__MACOSX		pymel.log
+Library			ajax-test		xgen
+MPLABXProjects		brings
+Movies			filename.txt
 ent-v314-010:~ student$ 
-
-
-
 
 ==========
 17. Change into the "stuff" directory that you just created.  Run the following command (we haven't learned this exact command yet, but we will in the next lab!) exactly as described below:
@@ -243,16 +249,17 @@ ent-v314-010:~ student$
 
 Copy and paste the output below. (It should contain stuff.tar)
 ----------
-
 ent-v314-010:~ student$ ls
-Adlm			Movies			ipe.properties
-Adobe			Music			isus
-Applications		New Unity Project	pymel.log
-Desktop			Pictures		stuff
-Documents		Public			stuff.tar
-Downloads		Things			xgen
-Library			ajax-test
-MPLABXProjects		filename.txt
+Adlm			Music			hello.txt
+Adobe			New Unity Project	ipe.properties
+Applications		Pictures		isus
+Desktop			Public			mtec1002-lab-02
+Documents		Things			mtec1002-lab-02.zip
+Downloads		__MACOSX		pymel.log
+Library			ajax-test		stuff
+MPLABXProjects		brings			stuff.tar
+Movies			filename.txt		xgen
+
 
 
 ==========
@@ -264,14 +271,26 @@ List your files again.... you should have a new file with a .gz extension.  Copy
 ----------
 
 ent-v314-010:~ student$ ls
-Adlm			Movies			ipe.properties
-Adobe			Music			isus
-Applications		New Unity Project	pymel.log
-Desktop			Pictures		stuff
-Documents		Public			stuff.tar.gz
-Downloads		Things			xgen
-Library			ajax-test
-MPLABXProjects		filename.txt
+Adlm			Music			hello.txt
+Adobe			New Unity Project	ipe.properties
+Applications		Pictures		isus
+Desktop			Public			mtec1002-lab-02
+Documents		Things			mtec1002-lab-02.zip
+Downloads		__MACOSX		pymel.log
+Library			ajax-test		stuff
+MPLABXProjects		brings			stuff.tar
+Movies			filename.txt		xgen
+ent-v314-010:~ student$ gzip stuff.tar
+ent-v314-010:~ student$ ls
+Adlm			Music			hello.txt
+Adobe			New Unity Project	ipe.properties
+Applications		Pictures		isus
+Desktop			Public			mtec1002-lab-02
+Documents		Things			mtec1002-lab-02.zip
+Downloads		__MACOSX		pymel.log
+Library			ajax-test		stuff
+MPLABXProjects		brings			stuff.tar.gz
+Movies			filename.txt		xgen
 ent-v314-010:~ student$ 
 
 
@@ -286,7 +305,8 @@ Change your directory to mtec1002-lab-02.
 
 List the files.  Copy and paste the output below (stuff.tar.gz should be there).
 ----------
-
+ent-v314-010:mtec1002-lab-02 student$ ls
+books		logs		stuff.tar.gz	web
 
 ==========
 22. You should be in the lab directory.  Let's uncompress the file.
@@ -296,27 +316,9 @@ $ tar -xvf stuff.tar.gz
 List the files.  Copy and paste the output below (the folder, stuff, should be there).
 ----------
 
+ent-v314-010:mtec1002-lab-02 student$             tar -xvf stuff.tar.gz
+x stuff/
+x stuff/hello.txt
+ent-v314-010:mtec1002-lab-02 student$ ls
+books		logs		stuff		stuff.tar.gz	web
 
-
-==========
-23. Go back to your home directory
-[No output]
-----------
-
-
-
-==========
-24. Download and uncompress this file using curl and tar -xvf in your home directory:
-
-http://foureyes.github.io/mtec1002/labs/02/secret.tar.gz
-
-REMEMBER to use the -o flag and specifiy a filenmae that ends in .tar.gz
-
-Write out the commands that you used to do this.
-----------
-
-
-
-==========
-25. How many files were in the archive.  What were their names?  Write out your answers below.
-----------
